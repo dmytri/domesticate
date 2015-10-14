@@ -27,7 +27,9 @@
       var code = fs.readFileSync(filename, 'utf8')
       if (typeof then === 'function') code = code + '\nthen(' + args + ')'
       var transpiled = callback(code)
+      /* eslint-disable */
       eval(transpiled)
+      /* eslint-enable */
     }
   }
 
