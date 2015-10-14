@@ -1,0 +1,29 @@
+{
+  "name": "domesticate",
+  "version": "1.0.0",
+  "description": "test browser javascript in node",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dmytri/domesticate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dmytri/domesticate/issues"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test.js"
+  },
+  "author": "Dmytri Kleiner <dk@trick.ca>",
+  "license": "ISC",
+  "dependencies": {
+    "jsdom": "^6.5.1"
+  },
+  "devDependencies": {
+    "jquery": "^2.1.4",
+    "mocha": "^2.3.3",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-tools": "^0.13.3",
+    "riot": "^2.2.4"
+  }
+}
