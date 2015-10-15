@@ -1,4 +1,5 @@
-/* global $, riot, React, ReactDOM, describe, it */
+/* global $, riot, React, ReactDOM, before, describe, it */
+
 
 var assert = require('assert')
 var ReactTools = require('react-tools')
@@ -17,6 +18,7 @@ domesticate.makeDOM(
     global.riot = window.riot
     global.React = window.React
     global.ReactDOM = window.ReactDOM
+    run()
   }
 )
 

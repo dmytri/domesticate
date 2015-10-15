@@ -1,6 +1,6 @@
 {
   "name": "domesticate",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "test browser javascript in node",
   "repository": {
     "type": "git",
@@ -11,7 +11,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha test.js"
+    "test": "./node_modules/.bin/mocha --delay test.js"
   },
   "author": "Dmytri Kleiner <dk@trick.ca>",
   "license": "ISC",
