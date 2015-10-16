@@ -1,7 +1,7 @@
 ;(function () {
   var jsdom = require('jsdom')
   var fs = require('fs')
-  var config = require('pkg-config')('domesticate', { root: null })
+  var config = require('pkg-config')('domesticate', { root: null }) || {}
 
   function makeDOM (html, scripts, globals, callback) {
     html = html ||  '<html><head></head><body></body></html>'

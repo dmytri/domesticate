@@ -1,6 +1,6 @@
 {
   "name": "domesticate",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "test browser javascript in node",
   "repository": {
     "type": "git",
