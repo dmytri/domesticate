@@ -7,7 +7,7 @@
     html = html ||  '<html><head></head><body></body></html>'
     scripts = scripts || []
     globals = globals || []
-    if (config.scripts) {
+    if (typeof config.scripts === 'object') {
       for (var s in config.scripts) {
         scripts.push(config.scripts[s][0])
         if (config.scripts[s].length > 1) {
