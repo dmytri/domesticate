@@ -16,7 +16,8 @@
   "author": "Dmytri Kleiner <dk@trick.ca>",
   "license": "ISC",
   "dependencies": {
-    "jsdom": "^6.5.1"
+    "jsdom": "^6.5.1",
+    "pkg-config": "^1.1.0"
   },
   "devDependencies": {
     "jquery": "^2.1.4",
@@ -25,5 +26,25 @@
     "react-dom": "^0.14.0",
     "react-tools": "^0.13.3",
     "riot": "^2.2.4"
+  },
+  "domesticate": {
+    "scripts": [
+      [
+        "node_modules/jquery/dist/jquery.min.js",
+        "$"
+      ],
+      [
+        "node_modules/riot/riot+compiler.min.js",
+        "riot"
+      ],
+      [
+        "node_modules/react/dist/react.min.js",
+        "React"
+      ],
+      [
+        "node_modules/react-dom/dist/react-dom.min.js",
+        "ReactDOM"
+      ]
+    ]
   }
 }
