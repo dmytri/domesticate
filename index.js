@@ -3,21 +3,21 @@
   var fs = require('fs')
   var config = require('pkg-config')('domesticate', { root: null }) || {}
 
-  function makeDOM (html, scripts, globals, callback) {
-    html = html ||  '<html><head></head><body></body></html>'
+  function makeDOM (html, scripts, callback) {
+    html = html || '<html><head></head><body></body></html>'
     scripts = scripts || []
-    globals = globals || []
-    if (typeof config.scripts === 'object') {
-      for (var s in config.scripts) {
-        scripts.push(config.scripts[s][0])
-        if (config.scripts[s].length > 1) {
-          globals = globals.concat(config.scripts[s].slice(1))
-        }
+    var paths = []
+    var globals = []
+    if (typeof config.scripts === 'object') scripts = scripts.concat(config.scripts)
+    for (var s in scripts) {
+      paths.push(scripts[s][0])
+      if (scripts[s].length > 1) {
+        globals = globals.concat(scripts[s].slice(1))
       }
     }
     jsdom.env({
       html: html,
-      scripts: scripts,
+      scripts: paths,
       features: {
         FetchExternalResources: ['script'],
         ProcessExternalResources: ['script']
@@ -35,7 +35,7 @@
   }
 
   function addDOM (html, callback) {
-    makeDOM(html, null, null, callback)
+    makeDOM(html, null, callback)
   }
 
   function transpile (filename, callback, then, args) {

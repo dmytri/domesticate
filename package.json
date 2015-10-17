@@ -11,7 +11,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --delay test.js"
+    "test": "./node_modules/.bin/mocha --delay tests/*"
   },
   "author": "Dmytri Kleiner <dk@trick.ca>",
   "license": "ISC",
@@ -36,14 +36,6 @@
       [
         "node_modules/riot/riot+compiler.min.js",
         "riot"
-      ],
-      [
-        "node_modules/react/dist/react.min.js",
-        "React"
-      ],
-      [
-        "node_modules/react-dom/dist/react-dom.min.js",
-        "ReactDOM"
       ]
     ]
   }

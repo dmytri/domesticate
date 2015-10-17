@@ -1,9 +1,8 @@
-/* global $, riot, React, ReactDOM, describe, it, run */
+/* global describe, it, run */  // mocha globals
+/* global $, riot, */           // domesticate injected globals
 
-
+var domesticate = require('../index.js')
 var assert = require('assert')
-var ReactTools = require('react-tools')
-var domesticate = require('./index.js')
 
 domesticate.addDOM(
   '<html><body><div id="test">test</div><my-tag></my-tag><div id="test-react"></div></body></html>',
@@ -32,19 +31,6 @@ describe('domesticate with Riot and jQuery', function () {
       done()
     })
     $('#test-form-riot').submit()
-  })
-})
-
-describe('domesticate with React', function () {
-  it('should work with react jsx', function (done) {
-    domesticate.transpile('./react.jsx', function (code) {
-      return ReactTools.transform(code)
-    }, function (MyReact) {
-      ReactDOM.render(React.createElement(MyReact, null), document.getElementById('test-react'))
-      document.getElementById('test-form-react-submit').click()
-      assert.equal(window.ReactIsWorking, 'working')
-      done()
-    }, 'MyReact')
   })
 })
 
