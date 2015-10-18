@@ -5,19 +5,19 @@ var domesticate = require('../index.js')
 var assert = require('assert')
 var ReactTools = require('react-tools')
 
-domesticate.makeDOM(
+domesticate.addDOM(
   '<html><body><div id="test">test</div><my-tag></my-tag><div id="test-react"></div></body></html>',
+  function () { run() },
   [
-      [
-        'node_modules/react/dist/react.js',
-        'React'
-      ],
-      [
-        'node_modules/react-dom/dist/react-dom.js',
-        'ReactDOM'
-      ]
-  ],
-  function () { run() }
+      {
+        'src': 'node_modules/react/dist/react.js',
+        'exports': ['React']
+      },
+      {
+        'src': 'node_modules/react-dom/dist/react-dom.js',
+        'exports': ['ReactDOM']
+      }
+  ]
 )
 
 describe('domesticate with React', function () {

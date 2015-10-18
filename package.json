@@ -29,14 +29,14 @@
   },
   "domesticate": {
     "scripts": [
-      [
-        "node_modules/jquery/dist/jquery.min.js",
-        "$"
-      ],
-      [
-        "node_modules/riot/riot+compiler.min.js",
-        "riot"
-      ]
+      {
+        "src": "node_modules/jquery/dist/jquery.min.js",
+        "exports": ["$"]
+      },
+      {
+        "src": "node_modules/riot/riot+compiler.min.js",
+        "exports": ["riot"]
+      }
     ]
   }
 }

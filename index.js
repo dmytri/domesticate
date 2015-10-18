@@ -3,16 +3,16 @@
   var fs = require('fs')
   var config = require('pkg-config')('domesticate', { root: null }) || {}
 
-  function makeDOM (html, scripts, callback) {
+  function addDOM (html, callback, scripts) {
     html = html || '<html><head></head><body></body></html>'
     scripts = scripts || []
     var paths = []
     var globals = []
     if (typeof config.scripts === 'object') scripts = scripts.concat(config.scripts)
     for (var s in scripts) {
-      paths.push(scripts[s][0])
-      if (scripts[s].length > 1) {
-        globals = globals.concat(scripts[s].slice(1))
+      paths.push(scripts[s].src)
+      if (typeof scripts[s].exports === 'object') {
+        globals = globals.concat(scripts[s].exports)
       }
     }
     jsdom.env({
@@ -34,10 +34,6 @@
     })
   }
 
-  function addDOM (html, callback) {
-    makeDOM(html, null, callback)
-  }
-
   function transpile (filename, callback, then, args) {
     if (typeof callback === 'function') {
       var code = fs.readFileSync(filename, 'utf8')
@@ -52,7 +48,7 @@
     }
   }
 
-  module.exports = { makeDOM: makeDOM, addDOM: addDOM, transpile: transpile }
+  module.exports = { addDOM: addDOM, transpile: transpile }
 }())
 
 /* vim set tabstop=2 shiftwidth=2 expandtab */
