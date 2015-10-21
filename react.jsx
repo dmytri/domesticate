@@ -1,6 +1,6 @@
 /* globals React */
 
-var MyReact = React.createClass({
+window.MyReact = React.createClass({
   work: function (event) {
     window.ReactIsWorking = 'working'
   },

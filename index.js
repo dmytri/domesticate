@@ -3,8 +3,7 @@
   var fs = require('fs')
   var config = require('pkg-config')('domesticate', { root: null }) || {}
 
-  function addDOM (html, callback, scripts) {
-    html = html || '<html><head></head><body></body></html>'
+  function addDOM (callback, scripts) {
     scripts = scripts || []
     var paths = []
     var globals = []
@@ -15,6 +14,7 @@
         globals = globals.concat(scripts[s].exports)
       }
     }
+    var html = fs.readFileSync(config.include, 'utf8')
     jsdom.env({
       html: html,
       scripts: paths,
@@ -29,22 +29,16 @@
         for (var g in globals) {
           global[globals[g]] = window[globals[g]]
         }
-        if (typeof callback === 'function') callback()
+        if (typeof callback === 'function') callback(window)
       }
     })
   }
 
-  function transpile (filename, callback, then, args) {
+  function transpile (filename, callback) {
     if (typeof callback === 'function') {
       var code = fs.readFileSync(filename, 'utf8')
-      if (typeof then === 'function') {
-        args = args || ''
-        code = code + '\nthen(' + args + ')'
-      }
       var transpiled = callback(code)
-      /* eslint-disable */
-      eval(transpiled)
-      /* eslint-enable */
+      module._compile(transpiled, filename)
     }
   }
 

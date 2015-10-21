@@ -11,7 +11,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --delay tests/*"
+    "test": "./node_modules/.bin/mocha --delay --ignore-leaks tests/*"
   },
   "author": "Dmytri Kleiner <dk@trick.ca>",
   "license": "ISC",
@@ -28,6 +28,7 @@
     "riot": "^2.2.4"
   },
   "domesticate": {
+    "include": "testdom.html",
     "scripts": [
       {
         "src": "node_modules/jquery/dist/jquery.min.js",
@@ -36,6 +37,14 @@
       {
         "src": "node_modules/riot/riot+compiler.min.js",
         "exports": ["riot"]
+      },
+      {
+        "src": "node_modules/react/dist/react.js",
+        "exports": ["React"]
+      },
+      {
+        "src": "node_modules/react-dom/dist/react-dom.js",
+        "exports": ["ReactDOM"]
       }
     ]
   }
