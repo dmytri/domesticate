@@ -1,11 +1,12 @@
 [![Build Status](https://travis-ci.org/dmytri/domesticate.svg)](https://travis-ci.org/dmytri/domesticate)
+[![Dependency Status](https://gemnasium.com/dmytri/domesticate.svg)](https://gemnasium.com/dmytri/domesticate)
 
 # Domesticate
 
 > "Exotic: a plant, shrub or tree, not native; a plant introduced from a
 > foreign country" -- *Webster*
 >
-> Most poetical translations resemble the reverse side of a piece of Govelin
+> Most poetical translations resemble the reverse side of a piece of Gobelin
 > tapestry. The figures and colours are there, but the charm is wanting. But
 > what is the use of making a translation at all, unless you can infuse into it
 > some that element which makes the original poem immortal? If the essential
