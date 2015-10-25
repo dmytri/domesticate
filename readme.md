@@ -98,7 +98,7 @@ replacing "html" with "include"
 
 ## adding scripts
 
-Scripts like jquery can be add as well.
+Scripts like jquery can be added as well.
 
 ```
 "domesticate": {
