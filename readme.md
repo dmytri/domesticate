@@ -2,8 +2,6 @@
 
 # Domesticate
 
-> "Caelum non animum mutant qui trans mare currunt."
->
 > "Exotic: a plant, shrub or tree, not native; a plant introduced from a
 > foreign country" -- *Webster*
 >
@@ -162,6 +160,6 @@ describe('domesticate with React', function () {
 })
 
 ```
-for the above test to work, 'test-react' must be present in the dom, by way of either "html" or "include" in "demesticate" section of your package.json, react and react-dom, must be present in the "scripts" of your "domesticate" section, and the node module "react-tools' must be installed.
+for the above test to work, 'test-react' must be present in the dom, by way of either "html" or "include" in the "demesticate" section of your package.json, react and react-dom, must be present in the "scripts" of your "domesticate" section, and the node module "react-tools' must be installed.
 
-
+> "Caelum non animum mutant qui trans mare currunt."
