@@ -160,6 +160,7 @@ describe('domesticate with React', function () {
 })
 
 ```
-for the above test to work, 'test-react' must be present in the dom, by way of either "html" or "include" in the "demesticate" section of your package.json, react and react-dom, must be present in the "scripts" of your "domesticate" section, and the node module "react-tools' must be installed.
+for the above test to work, 'test-react' must be present in the dom, by way of either "html" or "include" in the "domesticate" section of your package.json, react and react-dom, must be present in the "scripts" of your "domesticate" section, and the node module "react-tools' must be installed.
+
 
 > "Caelum non animum mutant qui trans mare currunt."
