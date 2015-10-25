@@ -164,6 +164,6 @@ for the above test to work, 'test-react' must be present in the dom, by way of e
 
 > "Caelum non animum mutant qui trans mare currunt."
 
-Domesticate is a very short script, if you want ot understand what it does better, just read the source code.
+Domesticate is a very short script, if you want to understand what it does better, just read the source code.
 
 
