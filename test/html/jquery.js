@@ -25,4 +25,3 @@ describe('domesticate with jQuery', function () {
     assert.equal($('#test').text(), 'test')
   })
 })
-

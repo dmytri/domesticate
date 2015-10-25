@@ -13,4 +13,3 @@ window.MyReact = React.createClass({
     )
   }
 })
-

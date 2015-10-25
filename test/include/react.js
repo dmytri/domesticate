@@ -17,4 +17,3 @@ describe('domesticate with React', function () {
     assert.equal(window.ReactIsWorking, 'working')
   })
 })
-

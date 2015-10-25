@@ -17,4 +17,3 @@ describe('domesticate with Riot', function () {
     document.getElementById('test-form-riot-submit').click()
   })
 })
-

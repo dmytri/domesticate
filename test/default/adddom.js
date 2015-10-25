@@ -15,4 +15,3 @@ describe('domesticate', function () {
     assert.equal(document.getElementById('trap'), null)
   })
 })
-
