@@ -33,13 +33,10 @@
 
 > -- "Exotics: attemps to domesticate them, J.F.C and L.C, 1875" 
 
-Testing front-end functionality usually required a lot of tooling, browswer
+Testing front-end functionality usually requires a lot of tooling, browser
 automation software or services, with the requisite yack shaving and
-biolerplaiting to make it go, and still the result is slow, brittle and often
-convoluted tests.
-
-Domesticate seeks to make front-end tests at home in the shell, so they are
-simple, expressive and fast, with minimal setup rigamarole.
+biolerplating to make it go, and still the resulting tests are slow, brittle
+and often convoluted.
 
 Domesticate uses [jsdom](https://github.com/tmpvar/jsdom) to make front-end
 tests at home in the shell, so they are simple, expressive and fast, with
