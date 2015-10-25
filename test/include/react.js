@@ -9,7 +9,7 @@ domesticate.addDOM(function () { run() })
 
 describe('domesticate with React', function () {
   it('should work with react jsx', function () {
-    domesticate.transpile('./react.jsx', function (code) {
+    domesticate.transpile('./test/react.jsx', function (code) {
       return ReactTools.transform(code)
     })
     ReactDOM.render(React.createElement(window.MyReact, null), document.getElementById('test-react'))
