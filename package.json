@@ -1,6 +1,6 @@
 {
   "name": "domesticate",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "test browser javascript in node",
   "repository": {
     "type": "git",
@@ -11,7 +11,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --delay --ignore-leaks tests/*"
+    "test": "./node_modules/.bin/standard -v && /bin/sh test/test.sh"
   },
   "author": "Dmytri Kleiner <dk@trick.ca>",
   "license": "ISC",
@@ -22,29 +22,33 @@
   "devDependencies": {
     "jquery": "^2.1.4",
     "mocha": "^2.3.3",
+    "pre-commit": "^1.1.2",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-tools": "^0.13.3",
     "riot": "^2.2.4"
   },
   "domesticate": {
-    "include": "testdom.html",
+    "html": "<html><head></head><body><div id=\"test\">test</div><div id=\"trap\"></div></body></html>",
+    "include": "test/testdom.html",
     "scripts": [
       {
-        "src": "node_modules/jquery/dist/jquery.min.js",
-        "exports": ["$"]
-      },
-      {
         "src": "node_modules/riot/riot+compiler.min.js",
-        "exports": ["riot"]
+        "exports": [
+          "riot"
+        ]
       },
       {
         "src": "node_modules/react/dist/react.js",
-        "exports": ["React"]
+        "exports": [
+          "React"
+        ]
       },
       {
         "src": "node_modules/react-dom/dist/react-dom.js",
-        "exports": ["ReactDOM"]
+        "exports": [
+          "ReactDOM"
+        ]
       }
     ]
   }

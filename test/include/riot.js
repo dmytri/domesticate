@@ -1,12 +1,9 @@
 /* global describe, it, run */  // mocha globals
-/* global $, riot, */           // domesticate injected globals
+/* global riot, */ // domesticate injected globals
 
-var domesticate = require('../index.js')
-var assert = require('assert')
+var domesticate = require('../../index.js')
 
-domesticate.addDOM(
-  function () { run() }
-)
+domesticate.addDOM(function () { run() })
 
 describe('domesticate with Riot', function () {
   it('should work with riot tags', function (done) {

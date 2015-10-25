@@ -1,13 +1,11 @@
-/* global describe, it, run */        // mocha globals
-/* global React, ReactDOM */ // domesticate injected globals
+/* global describe, it, run */ // mocha globals
+/* global React, ReactDOM, */ // domesticate injected globals
 
-var domesticate = require('../index.js')
+var domesticate = require('../../index.js')
 var assert = require('assert')
 var ReactTools = require('react-tools')
 
-domesticate.addDOM(
-  function () { run() }
-)
+domesticate.addDOM(function () { run() })
 
 describe('domesticate with React', function () {
   it('should work with react jsx', function () {

@@ -1,9 +1,51 @@
 [![Build Status](https://travis-ci.org/dmytri/domesticate.svg)](https://travis-ci.org/dmytri/domesticate)
 
 # Domesticate
-## tame your front-end tests.
 
-Testing front-end functionality usually required a lot of tooling, domesticate uses [jsdom](https://github.com/tmpvar/jsdom) so that your front-end components can be tested quickly and easily with nodejs and simple testing tools like [tap](https://github.com/isaacs/node-tap) or [mocha](http://mochajs.org/)
+> "Caelum non animum mutant qui trans mare currunt."
+>
+> "Exotic: a plant, shrub or tree, not native; a plant introduced from a
+> foreign country" -- *Webster*
+>
+> Most poetical translations resemble the reverse side of a piece of Govelin
+> tapestry. The figures and colours are there, but the charm is wanting. But
+> what is the use of making a translation at all, unless you can infuse into it
+> some that element which makes the original poem immortal? If the essential
+> spirit, which is the attraction in it, has evaporated, of what advantage is
+> the residdum? You present us with an English version of an ode of Horace, or
+> a song of Goethe; and we can only say "If this where all. Horace and Goethe
+> would not be remembered ten years, Why is it, then, that they are immortal?"
+> 
+> The reason why we who translate are not aware of own failures is perhaps
+> this, -- that we are so enchanted with the original poem that we associate
+> this pleasure with our own. A translater does not see the bladness and
+> prosaic character of their work, because every word suggest to them the
+> beauty which it is meant to represent. So a person travelling through
+> pcituresque scenery sometimes makes rud sketches of what he sees, which
+> convey to others no idea of the landscape; but to them the are accociated
+> with the light, the color, the perspectve, in effable charm of nature, so are
+> valuable to them as souveniers of the scene.
+> 
+> A successfull translation must produce in the reader unacquanited with the
+> original the same sort of feeling which that conveys. The ideal of a
+> translation would be one which , if the original were lost, would remain
+> forever as immortal. Without any thought of it as a translation, it should
+> give as so much pleasure in itself as to a live of its own in literature. Is
+> this impossibe? We have some examples to prove that it can be done.
+
+> -- "Exotics: attemps to domesticate them, J.F.C and L.C, 1875" 
+
+Testing front-end functionality usually required a lot of tooling, browswer
+automation software or services, with the requisite yack shaving and
+biolerplaiting to make it go, and still the result is slow, brittle and often
+convoluted tests.
+
+Domesticate seeks to make front-end tests at home in the shell, so they are
+simple, expressive and fast, with minimal setup rigamarole.
+
+Domesticate uses [jsdom](https://github.com/tmpvar/jsdom) to make front-end
+tests at home in the shell, so they are simple, expressive and fast, with
+minimal setup rigamarole.
 
 ## install
 
@@ -24,7 +66,6 @@ var assert = require('assert')
 var domesticate = require('domesticate')
 
 domesticate.addDOM(
-  '<html><body><div id="test">test</div></body></html>',
   function () { run() }
 )
 
@@ -35,91 +76,92 @@ describe('domesticate', function () {
 })
 ```
 
-## provide the dom and jQuery
+## configure the dom
 
-var assert = require('assert')
+The above test will fail at first, because there is no element with the id
+"test" in the dom by default, to add it, we need to add a domesticate section
+to our project's package.json.
+
+```
+"domesticate": {
+  "html": "<html><head></head><body><div id=\"test\">test</div></body></html>"
+}
+```
+
+Now our test will pass, because domestivate will add the html to the dom that
+os available to our test. You can also include this html from a file by
+replacing "html" with "include"
+
+```
+"domesticate": {
+  "include": "/path/to/testdom.html"
+}
+```
+
+## adding scripts
+
+Scripts like jquery can be add as well.
+
+```
+"domesticate": {
+  "html": "<html><head></head><body><div id=\"test\">test</div></body></html>",
+  "scripts": [
+    {
+      "src": "/path/to/jquery.js",
+      "exports": [
+        "$"
+      ]
+    }
+  ]
+}
+```
+
+Exports tells domesticate which globals defined by the script to make available for your tests, and src is the path to the script.
+
+## transpiling
+
+You can include code written in jsx, riot tags, coffeescript, es6 or whatever
+by using domesticate.transpile. Which takes two arguments, the path to the code
+and a callback wich will transpile and return plain javascript. i.e, this React
+class:
+
+```
+window.MyReact = React.createClass({
+  work: function (event) {
+    window.ReactIsWorking = 'working'
+  },
+  render: function () {
+    return (
+      <form id='test-form-react' onSubmit={this.work}>
+        <input id='test-form-react-submit' type='submit' onClick={this.work}></input>
+      </form>
+    )
+  }
+})
+
+```
+Can be tested as follows:
+
+```
+
 var domesticate = require('domesticate')
+var assert = require('assert')
+var ReactTools = require('react-tools')
 
-```
-domesticate.makeDOM(
-  '<html><body><div id="test">test</div></body></html>',
-  [
-      [
-        "node_modules/jquery/dist/jquery.js",
-        "$"
-      ]
-  ],
-  function () { run() }
-)
-
-describe('domesticate with jQuery', function () {
-  it('should make jquery available', function () {
-    assert.equal($('#test').text(), 'test')
-  })
-})
-```
-
-## provide the DOM, Riot and jQuery
-
-```
-domesticate.makeDOM(
-  '<html><body><my-tag></my-tag></body></html>',
-  [
-      [
-        "node_modules/jquery/dist/jquery.js",
-        "$"
-      ],
-      [
-        "node_modules/riot/riot+compiler.js",
-        "riot"
-      ]
-  ],
-  function () { run() }
-)
-
-describe('domesticate with Riot and jQuery', function () {
-  it('should work with riot tags', function (done) {
-    domesticate.transpile('./riot.tag', function (code) {
-      return riot.compile(code)
-    })
-    var tag = riot.mount('my-tag')[0]
-    tag.on('submit', function () {
-      done()
-    })
-    $('#test-form-riot').submit()
-  })
-})
-```
-
-## provide the DOM, React and ReactDOM
-
-```
-domesticate.makeDOM(
-  '<html><body><div id="test">test</div></body></html>',
-  [
-      [
-        "node_modules/react/dist/react.js",
-        "React"
-      ],
-      [
-        "node_modules/react-dom/dist/react-dom.js",
-        "ReactDOM"
-      ]
-  ],
-  function () { run() }
-)
+domesticate.addDOM(function () { run() })
 
 describe('domesticate with React', function () {
-  it('should work with react jsx', function (done) {
+  it('should work with react jsx', function () {
     domesticate.transpile('./react.jsx', function (code) {
       return ReactTools.transform(code)
-    }, function (MyReact) {
-      ReactDOM.render(React.createElement(MyReact, null), document.getElementById('test'))
-      document.getElementById('test-form-react-submit').click()
-      assert.equal(window.ReactIsWorking, 'working')
-      done()
-    }, 'MyReact')
+    })
+    ReactDOM.render(React.createElement(window.MyReact, null), document.getElementById('test-react'))
+    document.getElementById('test-form-react-submit').click()
+    assert.equal(window.ReactIsWorking, 'working')
   })
 })
+
 ```
+for the above test to work, 'test-react' must be present in the dom, by way of either "html" or "include" in "demesticate" section of your package.json, react and react-dom, must be present in the "scripts" of your "domesticate" section, and the node module "react-tools' must be installed.
+
 

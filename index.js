@@ -3,8 +3,9 @@
   var fs = require('fs')
   var config = require('pkg-config')('domesticate', { root: null }) || {}
 
-  function addDOM (callback, scripts) {
-    scripts = scripts || []
+  function addDOM (callback, options) {
+    options = options || {}
+    var scripts = options.scripts || []
     var paths = []
     var globals = []
     if (typeof config.scripts === 'object') scripts = scripts.concat(config.scripts)
@@ -14,7 +15,9 @@
         globals = globals.concat(scripts[s].exports)
       }
     }
-    var html = fs.readFileSync(config.include, 'utf8')
+    var html = '<html><head></head><body></body></html>'
+    if (!options.ignoreHtml && typeof config.html === 'string') html = config.html
+    if (!options.ignoreInclude && typeof config.include === 'string') html = fs.readFileSync(config.include, 'utf8')
     jsdom.env({
       html: html,
       scripts: paths,

@@ -1,5 +1,6 @@
 /* globals React */
 
+/* eslint-disable no-unused-vars */
 window.MyReact = React.createClass({
   work: function (event) {
     window.ReactIsWorking = 'working'
