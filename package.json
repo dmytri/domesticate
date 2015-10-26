@@ -1,6 +1,6 @@
 {
   "name": "domesticate",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "test browser javascript in node",
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
   "author": "Dmytri Kleiner <dk@trick.ca>",
   "license": "ISC",
   "dependencies": {
-    "jsdom": "^7.0.2",
+    "jsdom": "^6.5.1",
     "pkg-config": "^1.1.0"
   },
   "devDependencies": {
