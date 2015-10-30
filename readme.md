@@ -64,13 +64,13 @@ minimal setup rigamarole.
 
 ## install
 
-```
+```bash
 $ npm install domesticate --save-dev
 ```
 
 ## writing tests
 
-the example tests below are mocha tests run with mocha --delay so that the dom
+the example tests below are mocha tests run with ```mocha --delay``` so that the dom
 is prepared before tests are run, the mocha run function is called in a
 domesticate callback.
 
