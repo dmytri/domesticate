@@ -7,9 +7,8 @@
 /  |  /  \_/ |/ |/ |  |/  / \_|  |  /    /  |  |  |/  
 \_/|_/\__/   |  |  |_/|__/ \/ |_/|_/\___/\_/|_/|_/|__/
 ------------------------------------------------------
-```
+// quick example with``` [tape](https://github.com/substack/tape)
 ```javascript
-// quick example with [tape](https://github.com/substack/tape)
 test('domesticate', function (t) {
   t.plan(1)
   domesticate.addDOM(
