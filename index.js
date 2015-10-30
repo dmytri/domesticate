@@ -6,7 +6,9 @@
 
  *********************************************************/
 
-;(function () {
+/* globals global, console, require, module */
+
+;(function () { // eshint-disable-line unecessary-semicolon
   var jsdom = require('jsdom')
   var fs = require('fs')
   /* istanbul ignore next */
@@ -50,7 +52,7 @@
       done: function (errors, window) {
         /* istanbul ignore if */
         if (errors != null) {
-          console.log('Errors', errors)
+          console.log('Errors', errors) // eslint-disable-line no-console
         }
         global.window = window
         global.document = window.document
