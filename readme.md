@@ -21,7 +21,6 @@ test('domesticate me', function (t) {
   domesticate.addDOM(function () {
     // TRANSPILE YOUR FRONT-END DOO-DADS (i.e. riot tags)
     domesticate.transpile('/path/to/riot.tag', riot.compile)
-      console.log(document.body.innerHTML)
     var tag = riot.mount('riot-tag')[0]
     tag.on('submit', function () {
       t.pass('riot form should submit on click')
