@@ -96,7 +96,7 @@ describe('domesticate', function () {
 
 The above test will fail at first, because there is no element with the id
 "test" in the dom by default, to add it, we need to add a domesticate section
-to our project's package.json.
+to our project's ```package.json```.
 
 
 ```json
@@ -181,7 +181,7 @@ describe('domesticate with React', function () {
 ```
 
 for the above test to work, 'test-react' must be present in the dom, by way of
-either "html" or "include" in the "domesticate" section of your package.json,
+either "html" or "include" in the "domesticate" section of your ```package.json```,
 react and react-dom, must be present in the "scripts" of your "domesticate"
 section, and the node module "react-tools' must be installed.
 
