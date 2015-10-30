@@ -8,7 +8,7 @@
 
 /* globals global, console, require, module */
 
-;(function () { // eshint-disable-line unecessary-semicolon
+;(function () { // eslint-disable-line no-extra-semi
   var jsdom = require('jsdom')
   var fs = require('fs')
   /* istanbul ignore next */
