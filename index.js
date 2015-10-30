@@ -1,8 +1,10 @@
-/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-* Domesticate: Make Browser UI Tests at Home in Node
-* Dmytri Kleiner <dk@trick.ca>
-* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-*/
+/*
+ *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ *   Domesticate: Make Browser UI Tests at Home in Node
+ *   Dmytri Kleiner <dk@trick.ca>
+ *  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ *********************************************************/
 
 ;(function () {
   var jsdom = require('jsdom')
