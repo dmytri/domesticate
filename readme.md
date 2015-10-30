@@ -2,14 +2,14 @@
 [![Dependency Status](https://gemnasium.com/dmytri/domesticate.svg)](https://gemnasium.com/dmytri/domesticate)
 
 ```                                                      
-   |                             o                    
+   |                             .                    
  __|   __   _  _  _    _   , _|_     __   __, _|_  _  
 /  |  /  \_/ |/ |/ |  |/  / \_|  |  /    /  |  |  |/  
 \_/|_/\__/   |  |  |_/|__/ \/ |_/|_/\___/\_/|_/|_/|__/
 ------------------------------------------------------
 ```
 ```javascript
-// quick example with tape
+// quick example with [tape](https://github.com/substack/tape)
 test('domesticate', function (t) {
   t.plan(1)
   domesticate.addDOM(
@@ -70,7 +70,7 @@ $ npm install domesticate --save-dev
 
 ## writing tests
 
-the example tests below are mocha tests run with ```mocha --delay``` so that the dom
+the example tests below are [mocha](http://mochajs.org/bash) tests run with ```mocha --delay``` so that the dom
 is prepared before tests are run, the mocha run function is called in a
 domesticate callback.
 
