@@ -1,10 +1,10 @@
 {
   "name": "domesticate",
-  "version": "3.0.3",
-  "description": "test browser javascript in node",
+  "version": "3.1.0",
+  "description": "Make Browser UI Tests at Home in Node",
   "repository": {
     "type": "git",
-    "url": "git://github.com/dmytri/domesticate.git"
+    "url": "git://github.com/dmytri/node-domesticate.git"
   },
   "keywords": [
     "dom",
@@ -15,7 +15,8 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/standard -v && /bin/sh test/test.sh"
+    "test": "./node_modules/.bin/standard -v && ./node_modules/.bin/istanbul cover test/test.js | ./node_modules/.bin/tap-colorize",
+    "coverage": "./node_modules/.bin/istanbul cover test/test.js | ./node_modules/.bin/tap-colorize"
   },
   "author": "Dmytri Kleiner <dk@trick.ca>",
   "license": "ISC",
@@ -24,14 +25,17 @@
     "pkg-config": "^1.1.0"
   },
   "devDependencies": {
+    "istanbul": "^0.4.0",
     "jquery": "^2.1.4",
-    "mocha": "^2.3.3",
+    "nock": "^2.17.0",
     "pre-commit": "^1.1.2",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-tools": "^0.13.3",
     "riot": "^2.2.4",
-    "standard": "^5.3.1"
+    "standard": "^5.3.1",
+    "tap-colorize": "^1.2.0",
+    "tape": "^4.2.2"
   },
   "domesticate": {
     "html": "<html><head></head><body><div id=\"test\">test</div><div id=\"trap\"></div></body></html>",

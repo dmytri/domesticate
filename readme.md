@@ -1,7 +1,23 @@
 [![Build Status](https://travis-ci.org/dmytri/domesticate.svg)](https://travis-ci.org/dmytri/domesticate)
 [![Dependency Status](https://gemnasium.com/dmytri/domesticate.svg)](https://gemnasium.com/dmytri/domesticate)
 
-# Domesticate
+```                                                      
+   |                             o                    
+ __|   __   _  _  _    _   , _|_     __   __, _|_  _  
+/  |  /  \_/ |/ |/ |  |/  / \_|  |  /    /  |  |  |/  
+\_/|_/\__/   |  |  |_/|__/ \/ |_/|_/\___/\_/|_/|_/|__/
+```
+```javascript
+// quick example with tape
+tape.test('domesticate', function (t) {
+  t.plan(1)
+  domesticate.addDOM(
+    function () {
+      t.equal(typeof document.body, 'object', 'document body should be typeof object')
+    }
+  )
+})
+```
 
 > "Exotic: a plant, shrub or tree, not native; a plant introduced from a
 > foreign country" -- *Webster*
@@ -34,6 +50,8 @@
 
 > -- "Exotics: attemps to domesticate them, J.F.C and L.C, 1875" 
 
+# Domesticate
+
 Testing front-end functionality usually requires a lot of tooling, browser
 automation software or services, with the requisite yack shaving and
 biolerplating to make it go, and still the resulting tests are slow, brittle
@@ -57,7 +75,7 @@ domesticate callback.
 
 ## provide the dom
 
-```
+```javascript
 var assert = require('assert')
 var domesticate = require('domesticate')
 
@@ -70,6 +88,7 @@ describe('domesticate', function () {
     assert.equal(document.getElementById('test').innerHTML, 'test')
   })
 })
+
 ```
 
 ## configure the dom
@@ -78,7 +97,8 @@ The above test will fail at first, because there is no element with the id
 "test" in the dom by default, to add it, we need to add a domesticate section
 to our project's package.json.
 
-```
+
+```json
 "domesticate": {
   "html": "<html><head></head><body><div id=\"test\">test</div></body></html>"
 }
@@ -88,7 +108,7 @@ Now our test will pass, because domestivate will add the html to the dom that
 os available to our test. You can also include this html from a file by
 replacing "html" with "include"
 
-```
+```json
 "domesticate": {
   "include": "/path/to/testdom.html"
 }
@@ -98,7 +118,7 @@ replacing "html" with "include"
 
 Scripts like jquery can be added as well.
 
-```
+```json
 "domesticate": {
   "html": "<html><head></head><body><div id=\"test\">test</div></body></html>",
   "scripts": [
@@ -112,7 +132,8 @@ Scripts like jquery can be added as well.
 }
 ```
 
-Exports tells domesticate which globals defined by the script to make available for your tests, and src is the path to the script.
+Exports tells domesticate which globals defined by the script to make available
+for your tests, and src is the path to the script.
 
 ## transpiling
 
@@ -121,7 +142,7 @@ by using domesticate.transpile. Which takes two arguments, the path to the code
 and a callback wich will transpile and return plain javascript. i.e, this React
 class:
 
-```
+```javascript
 window.MyReact = React.createClass({
   work: function (event) {
     window.ReactIsWorking = 'working'
@@ -136,10 +157,10 @@ window.MyReact = React.createClass({
 })
 
 ```
+
 Can be tested as follows:
 
-```
-
+```javascript
 var domesticate = require('domesticate')
 var assert = require('assert')
 var ReactTools = require('react-tools')
@@ -156,12 +177,16 @@ describe('domesticate with React', function () {
     assert.equal(window.ReactIsWorking, 'working')
   })
 })
-
 ```
-for the above test to work, 'test-react' must be present in the dom, by way of either "html" or "include" in the "domesticate" section of your package.json, react and react-dom, must be present in the "scripts" of your "domesticate" section, and the node module "react-tools' must be installed.
+
+for the above test to work, 'test-react' must be present in the dom, by way of
+either "html" or "include" in the "domesticate" section of your package.json,
+react and react-dom, must be present in the "scripts" of your "domesticate"
+section, and the node module "react-tools' must be installed.
 
 > "Caelum non animum mutant qui trans mare currunt."
 
-Domesticate is a very short script, if you want to understand what it does better, just read the source code.
+Domesticate is a very short script, if you want to understand what it does
+better, see examples in tests and read the source code.
 
 
