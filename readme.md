@@ -9,7 +9,7 @@
 ```
 ```javascript
 // quick example with tape
-tape.test('domesticate', function (t) {
+test('domesticate', function (t) {
   t.plan(1)
   domesticate.addDOM(
     function () {
