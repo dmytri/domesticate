@@ -9,13 +9,32 @@
 ------------------------------------------------------
 ```// quick example with``` [tape](https://github.com/substack/tape)
 ```javascript
-test('domesticate', function (t) {
-  t.plan(1)
-  domesticate.addDOM(
-    function () {
-      t.equal(typeof document.body, 'object', 'document body should be typeof object')
-    }
-  )
+domesticate = require('domesticate')
+test = require('tape')
+
+test('domesticate me', function (t) {
+  t.plan(2)
+  // ADD DOM
+  domesticate.addDOM(function () {
+    // TRANSPILE YOUR FRONT-END DOO-DADS (i.e. riot tags)
+    domesticate.transpile('/path/to/riot.tag', riot.compile)
+      console.log(document.body.innerHTML)
+    var tag = riot.mount('riot-tag')[0]
+    tag.on('submit', function () {
+      t.pass('riot form should submit on click')
+    })
+    // WRITE ASSERTS AS IF YOUR WHERE IN THE BROWSER
+    document.getElementById('test-form-riot-submit').click()
+    t.equal(typeof document.body, 'object', 'document body should be typeof object')
+  }, {
+    html: '<html><head></head><body><riot-tag></riot-tag></body></html>',
+    scripts: [
+      {
+        src: 'node_modules/riot/riot+compiler.min.js',
+        exports: ['riot']
+      }
+    ]
+  })
 })
 ```
 
