@@ -1,10 +1,11 @@
-[![Build Status](https://img.shields.io/travis/dmytri/domesticate.svg)](https://travis-ci.org/dmytri/domesticate)
-[![Dependency Status](https://img.shields.io/gemnasium/dmytri/domesticate.svg)](https://gemnasium.com/dmytri/domesticate)
-
-```                                                      
+[![Build Status](https://img.shields.io/travis/dmytri/node-domesticate.svg)](https://travis-ci.org/dmytri/node-domesticate)
+[![Code Climate](https://img.shields.io/codeclimate/github/dmytri/node-domesticate.svg)](https://codeclimate.com/dmytri/node-domesticate)
+[![Code Climate](https://img.shields.io/codeclimate/coverage/github/dmytri/node-domesticate.svg)](https://codeclimate.com/github/dmytri/node-domesticate/coverage)
+[![Dependency Status](https://img.shields.io/gemnasium/dmytri/node-domesticate.svg)](https://gemnasium.com/dmytri/node-domesticate)
+```
    |
- __|   __   _  _  _    _   , _|_ .   __   __, _|_  _  
-/  |  /  \_/ |/ |/ |  |/  / \_|  |  /    /  |  |  |/  
+ __|   __   _  _  _    _   , _|_ .   __   __, _|_  _
+/  |  /  \_/ |/ |/ |  |/  / \_|  |  /    /  |  |  |/
 \_/|_/\__/   |  |  |_/|__/ \/ |_/|_/\___/\_/|_/|_/|__/
 ------------------------------------------------------
 ```
@@ -51,7 +52,7 @@ test('domesticate me', function (t) {
 > the residdum? You present us with an English version of an ode of Horace, or
 > a song of Goethe; and we can only say "If this where all. Horace and Goethe
 > would not be remembered ten years, Why is it, then, that they are immortal?"
-> 
+>
 > The reason why we who translate are not aware of own failures is perhaps
 > this, -- that we are so enchanted with the original poem that we associate
 > this pleasure with our own. A translater does not see the bladness and
@@ -61,7 +62,7 @@ test('domesticate me', function (t) {
 > convey to others no idea of the landscape; but to them the are accociated
 > with the light, the color, the perspectve, in effable charm of nature, so are
 > valuable to them as souveniers of the scene.
-> 
+>
 > A successfull translation must produce in the reader unacquanited with the
 > original the same sort of feeling which that conveys. The ideal of a
 > translation would be one which , if the original were lost, would remain
@@ -69,7 +70,7 @@ test('domesticate me', function (t) {
 > give as so much pleasure in itself as to a live of its own in literature. Is
 > this impossibe? We have some examples to prove that it can be done.
 
-> -- "Exotics: attemps to domesticate them, J.F.C and L.C, 1875" 
+> -- "Exotics: attemps to domesticate them, J.F.C and L.C, 1875"
 
 # Domesticate
 
