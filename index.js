@@ -17,15 +17,26 @@
     var paths = []
     var globals = []
     /* istanbul ignore else */
-    if (typeof config.scripts === 'object') scripts = scripts.concat(config.scripts)
+    if (typeof config.scripts === 'object') {
+      scripts = scripts.concat(config.scripts)
+    }
     for (var s in scripts) {
-      paths.push(scripts[s].src)
       /* istanbul ignore else */
-      if (typeof scripts[s].exports === 'object') globals = globals.concat(scripts[s].exports)
+      if (scripts.hasOwnProperty(s)) {
+        paths.push(scripts[s].src)
+        /* istanbul ignore else */
+        if (typeof scripts[s].exports === 'object') {
+          globals = globals.concat(scripts[s].exports)
+        }
+      }
     }
     if (!options.html) {
-      if (!options.ignoreHtml && typeof config.html === 'string') html = config.html
-      if (!options.ignoreInclude && typeof config.include === 'string') html = fs.readFileSync(config.include, 'utf8')
+      if (!options.ignoreHtml && typeof config.html === 'string') {
+        html = config.html
+      }
+      if (!options.ignoreInclude && typeof config.include === 'string') {
+        html = fs.readFileSync(config.include, 'utf8')
+      }
     }
     jsdom.env({
       html: html,
@@ -36,14 +47,21 @@
       },
       done: function (errors, window) {
         /* istanbul ignore if */
-        if (errors != null) console.log('Errors', errors)
+        if (errors != null) {
+          console.log('Errors', errors)
+        }
         global.window = window
         global.document = window.document
         for (var g in globals) {
-          global[globals[g]] = window[globals[g]]
+          /* istanbul ignore else */
+          if (globals.hasOwnProperty(g)) {
+            global[globals[g]] = window[globals[g]]
+          }
         }
         /* istanbul ignore else */
-        if (typeof callback === 'function') callback(window)
+        if (typeof callback === 'function') {
+          callback(window)
+        }
       }
     })
   }

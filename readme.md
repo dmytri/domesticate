@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/dmytri/domesticate.svg)](https://travis-ci.org/dmytri/domesticate)
-[![Dependency Status](https://gemnasium.com/dmytri/domesticate.svg)](https://gemnasium.com/dmytri/domesticate)
+[![Build Status](https://img.shields.io/travis/dmytri/domesticate.svg)](https://travis-ci.org/dmytri/domesticate)
+[![Dependency Status](https://img.shields.io/gemnasium/dmytri/domesticate.svg)](https://gemnasium.com/dmytri/domesticate)
 
 ```                                                      
    |

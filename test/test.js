@@ -29,7 +29,7 @@ test('domesticate with jQuery', function (t) {
       .reply(200, {})
       $.ajax({
         url: '/test'
-      }).done(function (data) {
+      }).done(function () {
         t.pass('ajax should work')
       })
     }, {
