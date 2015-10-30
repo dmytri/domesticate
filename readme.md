@@ -9,7 +9,7 @@
 ------------------------------------------------------
 ```
 
-```// quick example with``` [tape](https://github.com/substack/tape)
+```// @example ``` using [tape](https://github.com/substack/tape)
 
 ```javascript
 domesticate = require('domesticate')
