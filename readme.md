@@ -1,6 +1,6 @@
 [![Build Status](https://img.shields.io/travis/dmytri/node-domesticate.svg)](https://travis-ci.org/dmytri/node-domesticate)
-[![Code Climate](https://img.shields.io/codeclimate/github/dmytri/node-domesticate.svg)](https://codeclimate.com/dmytri/node-domesticate)
-[![Code Climate](https://img.shields.io/codeclimate/coverage/github/dmytri/node-domesticate.svg)](https://codeclimate.com/dmytri/node-domesticate/coverage)
+[![Code Climate](https://img.shields.io/codeclimate/github/dmytri/node-domesticate.svg)](https://codeclimate.com/github/dmytri/node-domesticate)
+[![Test Coverage](https://img.shields.io/codeclimate.com/coverage/github/dmytri/node-domesticate/badges/coverage.svg)](https://codeclimate.com/github/dmytri/node-domesticate/coverage)
 [![Dependency Status](https://img.shields.io/gemnasium/dmytri/node-domesticate.svg)](https://gemnasium.com/dmytri/node-domesticate)
 ```
    |
