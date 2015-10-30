@@ -3,7 +3,6 @@ cache:
   - node_modules
 node_js:
   - "4.2.1"
-before_install:
-  - pip install codecov
-after_success:
-  - codecov
+addons:
+    code_climate:
+        repo_token: 049a46512a150945e392138b25cfd5735a408e43c76a2b14ad54985f924c2b9b
