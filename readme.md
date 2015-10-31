@@ -25,8 +25,9 @@ test('domesticate me', function (t) {
     tag.on('submit', function () {
       t.pass('riot form should submit on click')
     })
-    // WRITE ASSERTS AS IF YOUR WHERE IN THE BROWSER
-    document.getElementById('test-form-riot-submit').click()
+    // INTERACT WITH YOUR DOM
+    document.getElementById('submit-button').click()
+    // WRITE ASSERTS AS IF YOU WHERE IN THE BROWSER
     t.equal(typeof document.body, 'object', 'document body should be typeof object')
   }, {
     html: '<html><head></head><body><riot-tag></riot-tag></body></html>',
@@ -68,7 +69,7 @@ test('domesticate me', function (t) {
 > forever as immortal. Without any thought of it as a translation, it should
 > give as so much pleasure in itself as to a live of its own in literature. Is
 > this impossibe? We have some examples to prove that it can be done.
-
+>
 > -- "Exotics: attemps to domesticate them, J.F.C and L.C, 1875"
 
 # Domesticate
