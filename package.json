@@ -14,6 +14,7 @@
     "url": "https://github.com/dmytri/domesticate/issues"
   },
   "main": "index.js",
+  "bin" : { "vendorify": "./vendorify" },
   "scripts": {
     "test": "./node_modules/.bin/standard -v && ./node_modules/.bin/istanbul cover test/test.js | ./node_modules/.bin/tap-colorize",
     "coverage": "./node_modules/.bin/istanbul cover test/test.js | ./node_modules/.bin/tap-colorize"
@@ -21,6 +22,7 @@
   "author": "Dmytri Kleiner <dk@trick.ca>",
   "license": "ISC",
   "dependencies": {
+    "concat": "^1.0.0",
     "jsdom": "^6.5.1",
     "pkg-config": "^1.1.0"
   },
@@ -38,6 +40,7 @@
     "tape": "^4.2.2"
   },
   "domesticate": {
+    "vendorified" : "vendor.js",
     "html": "<html><head></head><body><div id=\"test\">test</div><div id=\"trap\"></div></body></html>",
     "include": "test/testdom.html",
     "scripts": [

@@ -26,12 +26,9 @@
     }
     for (var s in scripts) {
       /* istanbul ignore else */
-      if (scripts.hasOwnProperty(s)) {
+      if (scripts.hasOwnProperty(s) && typeof scripts[s].exports === 'object') {
         paths.push(scripts[s].src)
-        /* istanbul ignore else */
-        if (typeof scripts[s].exports === 'object') {
-          globals = globals.concat(scripts[s].exports)
-        }
+        globals = globals.concat(scripts[s].exports)
       }
     }
     if (!options.html) {

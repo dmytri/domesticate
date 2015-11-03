@@ -1,0 +1,24 @@
+#!/usr/bin/env node
+
+var concat = require('concat')
+
+;(function () { // eslint-disable-line no-extra-semi
+  var config = require('pkg-config')('domesticate', { root: null }) || {}
+  var scripts = []
+  var vendorified = config.vendorified || 'public/lib/vendor.js'
+  for (var s in config.scripts) {
+    /* istanbul ignore else */
+    var dontvendor = (config.scripts.dontvendor === 'true') || false
+    if (config.scripts.hasOwnProperty(s) && !dontvendor) {
+      scripts.push(config.scripts[s].src)
+    }
+  }
+console.log(scripts)
+  concat(scripts, vendorified, function (err) {
+    if (err) { 
+      console.log(err)
+    } else {
+      console.log('done')
+    }
+  })
+}())
