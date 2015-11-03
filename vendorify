@@ -8,7 +8,7 @@ var concat = require('concat')
   var vendorified = config.vendorified || 'public/lib/vendor.js'
   for (var s in config.scripts) {
     /* istanbul ignore else */
-    var dontvendor = (config.scripts.dontvendor === 'true') || false
+    var dontvendor = (config.scripts[s].dontvendor === 'true') || false
     if (config.scripts.hasOwnProperty(s) && !dontvendor) {
       scripts.push(config.scripts[s].src)
     }
