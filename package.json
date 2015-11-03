@@ -1,6 +1,6 @@
 {
   "name": "domesticate",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "Make Browser UI Tests at Home in Node",
   "repository": {
     "type": "git",
