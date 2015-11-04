@@ -79,4 +79,4 @@
   module.exports = { addDOM: addDOM, transpile: transpile }
 }())
 
-/* vim set tabstop=2 shiftwidth=2 expandtab */
+/* vim: tabstop=2 shiftwidth=2 expandtab */

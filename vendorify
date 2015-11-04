@@ -1,24 +1,22 @@
 #!/usr/bin/env node
 
-var concat = require('concat')
-
-;(function () { // eslint-disable-line no-extra-semi
-  var config = require('pkg-config')('domesticate', { root: null }) || {}
-  var scripts = []
-  var vendorified = config.vendorified || 'public/lib/vendor.js'
-  for (var s in config.scripts) {
-    /* istanbul ignore else */
+var fs = require('fs')
+var config = require('pkg-config')('domesticate', { root: null }) || {}
+var vendorified = config.vendorified || 'vendor.js'
+console.log(':: vendoring to', vendorified)
+fs.writeFileSync(vendorified, '', 'utf-8')
+for (var s in config.scripts) {
+  if (config.scripts.hasOwnProperty(s)) {
     var dontvendor = (config.scripts[s].dontvendor === 'true') || false
-    if (config.scripts.hasOwnProperty(s) && !dontvendor) {
-      scripts.push(config.scripts[s].src)
+    if (!dontvendor) {
+      var script = config.scripts[s].src
+      var code = fs.readFileSync(script, 'utf-8')
+      fs.appendFileSync(vendorified, ';(function() { /* vendorified ' + script + ' */\n', 'utf-8')
+      fs.appendFileSync(vendorified, code, 'utf-8')
+      fs.appendFileSync(vendorified, '}())\n', 'utf-8')
+      console.log(':: vendorified', script)
     }
   }
-console.log(scripts)
-  concat(scripts, vendorified, function (err) {
-    if (err) { 
-      console.log(err)
-    } else {
-      console.log('done')
-    }
-  })
-}())
+}
+
+/* vim: filetype=javascript tabstop=2 shiftwidth=2 expandtab */
