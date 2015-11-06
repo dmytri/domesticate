@@ -2,6 +2,7 @@
 
 var domesticate = require('../index.js')
 var test = require('tape')
+var fs = require('fs')
 
 // tests using domesticate default dom
 test('domesticate', function (t) {
@@ -74,5 +75,28 @@ test('domesticate with Riot', function (t) {
     document.getElementById('test-form-riot-submit').click()
   }, {
     html: '<html><head></head><body><my-tag></my-tag></body></html>'
+  })
+})
+
+// test compile
+test('domesticate compile stream', function (t) {
+  t.plan(1)
+  domesticate.addDOM(function () {
+    var stream = fs.createReadStream('./test/js.test')
+    window.testin = 'stream'
+    domesticate.compile('./test/js.test', stream, function (code) {
+      t.equal(window.testout, 'stream', 'stream should compile')
+    })
+  })
+})
+
+test('domesticate compile string', function (t) {
+  t.plan(1)
+  domesticate.addDOM(function () {
+    var string = fs.readFileSync('./test/js.test', 'utf-8')
+    window.testin = 'string'
+    domesticate.compile('./test/js.test', string, function (code) {
+      t.equal(window.testout, 'string', 'string should compile')
+    })
   })
 })

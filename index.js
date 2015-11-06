@@ -67,16 +67,39 @@
     })
   }
 
-  function transpile (filename, callback) {
+  function compile (filename, code, callback) {
+    if (typeof code === 'string') {
+      process(code)
+    /* istanbul ignore else */
+    } else if (typeof code.setEncoding === 'function') {
+      var parts = []
+      code.setEncoding('utf8')
+      .on('data', function (data) {
+        /* istanbul ignore else */
+        if (typeof data === 'string') {
+          parts.push(data)
+        }
+      })
+      .on('end', function () {
+        process(parts.join(''))
+      })
+    }
+    function process (code) {
+      module._compile(code, filename)
+      if (typeof callback === 'function') callback()
+    }
+  }
+
+  function transpile (filename, callback, done) {
     /* istanbul ignore else */
     if (typeof callback === 'function') {
       var code = fs.readFileSync(filename, 'utf8')
       var transpiled = callback(code)
-      module._compile(transpiled, filename)
+      compile(filename, transpiled, done)
     }
   }
 
-  module.exports = { addDOM: addDOM, transpile: transpile }
+  module.exports = { addDOM: addDOM, compile: compile, transpile: transpile }
 }())
 
-/* vim: tabstop=2 shiftwidth=2 expandtab */
+// vim: tabstop=2 shiftwidth=2 expandtab
